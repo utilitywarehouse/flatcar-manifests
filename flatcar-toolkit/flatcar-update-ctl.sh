@@ -13,7 +13,7 @@ KUBERNETES_SERVICE_HOST="${KUBERNETES_SERVICE_HOST:?"Must set KUBERNETES_SERVICE
 KUBERNETES_SERVICE_PORT="${KUBERNETES_SERVICE_PORT?"Must set KUBERNETES_SERVICE_PORT"}"
 
 ## Optional env vars 
-ANNOTATION_NAME="${ANNOTATION_NAME:-"flatcar-linux-update.v1.flatcar-linux.net/before-reboot-version-ctl-okay"}"
+ANNOTATION_NAME="${ANNOTATION_NAME:-"flatcar-linux-update.v1.flatcar-linux.net/before-reboot-version-ctl-ok"}"
 
 valid_version() {
   local version=$1
