@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: flatcar-linux-update-operator-sa
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flatcar-linux-update-operator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flatcar-linux-update-operator
+  template:
+    metadata:
+      labels:
+        app: flatcar-linux-update-operator
+    spec:
+      serviceAccountName: flatcar-linux-update-operator-sa
+      containers:
+        - name: update-operator
+          image: quay.io/kinvolk/flatcar-linux-update-operator:v0.7.3
+          command:
+            - "/bin/update-operator"
+            - "--reboot-window-start=22:00"
+            - "--reboot-window-length=8h"
+          env:
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+      tolerations:
+        - key: node-role.kubernetes.io/master
+          operator: Exists
+          effect: NoSchedule
