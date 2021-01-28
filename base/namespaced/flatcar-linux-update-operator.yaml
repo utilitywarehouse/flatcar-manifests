@@ -25,6 +25,7 @@ spec:
             - "/bin/update-operator"
             - "--reboot-window-start=22:00"
             - "--reboot-window-length=8h"
+            - "--before-reboot-annotations=flatcar-linux-update.v1.flatcar-linux.net/before-reboot-version-ctl-ok"
           env:
             - name: POD_NAMESPACE
               valueFrom:

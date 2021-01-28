@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - flatcar-linux-update-agent.yaml
   - flatcar-linux-update-operator.yaml
+  - flatcar-update-ctl.yaml
