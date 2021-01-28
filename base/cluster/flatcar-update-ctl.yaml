@@ -1,0 +1,44 @@
+apiVersion: policy/v1beta1
+kind: PodSecurityPolicy
+metadata:
+  name: flatcar-update-ctl
+spec:
+  volumes:
+    - "*"
+  allowedHostPaths:
+    - pathPrefix: "/usr/bin/update_engine_client"
+      readOnly: true
+    - pathPrefix: "/lib64"
+      readOnly: true
+    - pathPrefix: "/var/run/dbus"
+      readOnly: true
+  runAsUser:
+    rule: "RunAsAny"
+  seLinux:
+    rule: "RunAsAny"
+  supplementalGroups:
+    rule: "RunAsAny"
+  fsGroup:
+    rule: "RunAsAny"
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: flatcar-update-ctl
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - nodes
+    verbs:
+      - get
+      - list
+      - patch
+  - apiGroups:
+      - policy
+    resourceNames:
+      - flatcar-update-ctl
+    resources:
+      - podsecuritypolicies
+    verbs:
+      - use
