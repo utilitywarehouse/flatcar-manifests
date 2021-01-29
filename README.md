@@ -12,12 +12,31 @@ Includes:
 
 ## Usage
 
+There are bases for `aws`, `gcp` and `merit` providers.
+
 ```
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 bases:
-  - github.com/utilitywarehouse/flatcar-manifests//base/cluster?ref=master
-  - github.com/utilitywarehouse/flatcar-manifests//base/namespaced?ref=master
+  - github.com/utilitywarehouse/flatcar-manifests//aws/cluster?ref=master
+  - github.com/utilitywarehouse/flatcar-manifests//aws/namespaced?ref=master
 ```
+
+```
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+bases:
+  - github.com/utilitywarehouse/flatcar-manifests//gcp/cluster?ref=master
+  - github.com/utilitywarehouse/flatcar-manifests//gcp/namespaced?ref=master
+```
+
+```
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+bases:
+  - github.com/utilitywarehouse/flatcar-manifests//merit/cluster?ref=master
+  - github.com/utilitywarehouse/flatcar-manifests//merit/namespaced?ref=master
+```
+
 
 Refer to the [example](example/).

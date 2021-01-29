@@ -1,0 +1,6 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../common/flatcar-linux-update-agent/cluster/
+  - ../../common/flatcar-linux-update-operator/cluster/
+  - ../../common/flatcar-update-ctl/cluster/

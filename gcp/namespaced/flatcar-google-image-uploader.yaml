@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flatcar-google-image-uploader
+spec:
+  selector:
+    matchLabels:
+      app: flatcar-google-image-uploader
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: flatcar-google-image-uploader
+    spec:
+      containers:
+        - name: uploader
+          image: quay.io/utilitywarehouse/flatcar-google-image-uploader
