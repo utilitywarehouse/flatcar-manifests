@@ -9,6 +9,7 @@ Includes:
 - [flatcar-linux-update-operator](https://github.com/kinvolk/flatcar-linux-update-operator)
 - [A DaemonSet](base/namespaced/flatcar-update-ctl.yaml) that controls when nodes are rebooted
   into newer release versions
+- And, optionally, [Nebraska](https://github.com/kinvolk/nebraska)
 
 ## Usage
 
@@ -18,6 +19,7 @@ kind: Kustomization
 bases:
   - github.com/utilitywarehouse/flatcar-manifests//base/cluster?ref=master
   - github.com/utilitywarehouse/flatcar-manifests//base/namespaced?ref=master
+  - github.com/utilitywarehouse/flatcar-manifests//base/nebraska?ref=master
 ```
 
 Refer to the [example](example/).

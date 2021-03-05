@@ -6,17 +6,17 @@ metadata:
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
-  name: &name flatcar-update-ctl
+  name: flatcar-update-ctl
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/name: *name
+      app.kubernetes.io/name: flatcar-update-ctl
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: *name
+        app.kubernetes.io/name: flatcar-update-ctl
     spec:
-      serviceAccountName: *name
+      serviceAccountName: flatcar-update-ctl
       nodeSelector:
         flatcar-linux-update.v1.flatcar-linux.net/before-reboot: "true"
       tolerations:
@@ -24,7 +24,7 @@ spec:
           operator: Exists
           effect: NoSchedule
       containers:
-        - name: *name
+        - name: flatcar-update-ctl
           image: quay.io/utilitywarehouse/flatcar-toolkit
           args:
             - update-ctl
