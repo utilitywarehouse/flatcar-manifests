@@ -1,0 +1,68 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: nebraska
+  name: nebraska
+spec:
+  ports:
+    - name: nebraska
+      protocol: TCP
+      port: 8000
+      targetPort: 8000
+  selector:
+    app: nebraska
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nebraska
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nebraska
+  template:
+    metadata:
+      name: nebraska
+      labels:
+        app: nebraska
+    spec:
+      containers:
+        - name: nebraska
+          image: quay.io/flatcar/nebraska:2.3.3
+          command:
+            - /nebraska/nebraska
+            - -auth-mode=noop
+            - -http-static-dir=/nebraska/static
+            - -enable-syncer=true
+          env:
+            - name: NEBRASKA_DB_URL
+              valueFrom:
+                secretKeyRef:
+                  name: nebraska
+                  key: NEBRASKA_DB_URL
+          ports:
+            - name: tcp
+              containerPort: 8000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nebraska-configurer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nebraska-configurer
+  template:
+    metadata:
+      name: nebraska-configurer
+      labels:
+        app: nebraska-configurer
+    spec:
+      containers:
+        - name: configurer
+          image: quay.io/utilitywarehouse/flatcar-toolkit
+          args:
+            - nebraska-configurer
