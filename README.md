@@ -7,8 +7,6 @@ A Kustomize base for managing [Flatcar Container Linux](https://www.flatcar-linu
 Includes:
 
 - [flatcar-linux-update-operator](https://github.com/kinvolk/flatcar-linux-update-operator)
-- [A DaemonSet](base/namespaced/flatcar-update-ctl.yaml) that controls when nodes are rebooted
-  into newer release versions
 - And, optionally, [Nebraska](https://github.com/kinvolk/nebraska)
 
 ## Usage
