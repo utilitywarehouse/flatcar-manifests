@@ -45,24 +45,3 @@ spec:
           ports:
             - name: tcp
               containerPort: 8000
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: nebraska-configurer
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: nebraska-configurer
-  template:
-    metadata:
-      name: nebraska-configurer
-      labels:
-        app: nebraska-configurer
-    spec:
-      containers:
-        - name: configurer
-          image: quay.io/utilitywarehouse/flatcar-toolkit
-          args:
-            - nebraska-configurer
