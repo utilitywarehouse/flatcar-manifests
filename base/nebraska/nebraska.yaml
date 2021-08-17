@@ -30,7 +30,7 @@ spec:
     spec:
       containers:
         - name: nebraska
-          image: quay.io/flatcar/nebraska:2.3.3
+          image: quay.io/flatcar/nebraska:2.4.1
           command:
             - /nebraska/nebraska
             - -auth-mode=noop
