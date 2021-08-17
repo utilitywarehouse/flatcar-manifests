@@ -7,8 +7,6 @@ bases:
   # - github.com/utilitywarehouse/flatcar-manifests//base/namespaced?ref=master
   - ../base/nebraska
   # - github.com/utilitywarehouse/flatcar-manifests//base/nebraska?ref=master
-patchesStrategicMerge:
-  - nebraska-patch.yaml
 resources:
   - rbac.yaml
 secretGenerator:
