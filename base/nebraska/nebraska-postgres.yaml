@@ -36,6 +36,13 @@ spec:
                   key: POSTGRES_PASSWORD
             - name: PGDATA
               value: /data/pgdata
+          resources:
+            requests:
+              memory: "32Mi"
+              cpu: "0m"
+            limits:
+              memory: "512Mi"
+              cpu: "2000m"
           ports:
             - containerPort: 5432
           volumeMounts:

@@ -42,6 +42,13 @@ spec:
                 secretKeyRef:
                   name: nebraska
                   key: NEBRASKA_DB_URL
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "0m"
+            limits:
+              memory: "512Mi"
+              cpu: "2000m"
           ports:
             - name: tcp
               containerPort: 8000
