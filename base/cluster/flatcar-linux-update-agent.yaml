@@ -75,13 +75,17 @@ rules:
   - apiGroups:
       - ""
     resources:
-      - pods
       - pods/eviction
+    verbs:
+      - create
+  - apiGroups:
+      - ""
+    resources:
+      - pods
     verbs:
       - get
       - list
       - delete
-      - create
   - apiGroups:
       - "apps"
     resources:
