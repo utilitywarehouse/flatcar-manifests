@@ -20,7 +20,8 @@ spec:
       serviceAccountName: flatcar-linux-update-operator-sa
       containers:
         - name: update-operator
-          image: quay.io/kinvolk/flatcar-linux-update-operator:v0.7.3
+          # TODO: Switch back to release and upstream when >v0.8.0, quay.io/kinvolk/flatcar-linux-update-operator
+          image: registry.uw.systems/system-public/flatcar-linux-update-operator:f31353f6457dbd06889f776581e3c9afb7e8e528
           command:
             - "/bin/update-operator"
             - "--reboot-window-start=22:00"
